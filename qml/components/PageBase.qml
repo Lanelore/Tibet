@@ -43,11 +43,10 @@ Page {
     anchors.left: parent.left
     anchors.right: parent.right
     height: dp(25)
-    // z: 100000
 
     gradient: Gradient {
-      GradientStop { position: 0.0; color: "#80000000" }
-      GradientStop { position: 0.5; color: "#30000000" }
+      GradientStop { position: 0.0; color: "black" }
+      GradientStop { position: 0.4; color: "#30000000" }
       GradientStop { position: 1.0; color: "transparent" }
     }
   }
