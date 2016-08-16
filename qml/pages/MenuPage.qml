@@ -1,26 +1,12 @@
 import QtQuick 2.0
 import QtQuick.Controls 1.2
 import QtQuick.Layouts 1.1
-
 import VPlayApps 1.0
+import "../components"
 
-Page {
+PageBase {
   id: widgetsPage
   property bool activated: true
-
-  // configure custom rightBarItem for navigation bar of widgets page
-  rightBarItem:  NavigationBarRow {
-    ActivityIndicatorBarItem {
-      id: busyBarItem
-      animating: widgetsPage.activated
-      showItem: showItemAlways
-    }
-    IconButtonBarItem {
-      icon: widgetsPage.activated ? IconType.toggleon : IconType.toggleoff
-      onClicked: widgetsPage.activated = !widgetsPage.activated
-      title: "Toggle"
-    }
-  }
 
   Item {
     anchors.top: parent.top
@@ -108,7 +94,12 @@ Page {
 
             checked: widgetsPage.activated
             updateChecked: false //always keep the property binding
-            onToggled: widgetsPage.activated = !widgetsPage.activated
+            onToggled: {
+              widgetsPage.activated = !widgetsPage.activated
+
+              navigationStack.push(teachPageComponent); //jsonData: modelData.subcategory
+
+            }
           }
 
           AppActivityIndicator {

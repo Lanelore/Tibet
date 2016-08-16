@@ -12,6 +12,8 @@ Page {
   Navigation {
     id: navigation
 
+    navigationMode: navigationModeNone
+
     NavigationItem {
       id: menuItem
       title: "Menu"
@@ -21,16 +23,22 @@ Page {
         MenuPage { title: menuItem.title }
       }
     }
-
+/*
     NavigationItem {
-      id: simpleListPage
+      id: teachPage
       title: "Simple List"
       icon: IconType.list
 
       NavigationStack {
         splitView: tablet
-        SimpleListPage { title: simpleListPage.title }
+        TeachPage { title: teachPage.title }
       }
     }
+    */
+  }
+
+  Component {
+    id: teachPageComponent
+    TeachPage {}
   }
 }
