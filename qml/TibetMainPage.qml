@@ -1,8 +1,6 @@
 import QtQuick 2.4
 import QtQuick.Controls 1.2
-
 import VPlayApps 1.0
-
 import "pages"
 
 Page {
@@ -11,7 +9,6 @@ Page {
 
   Navigation {
     id: navigation
-
     navigationMode: navigationModeNone
 
     NavigationItem {
@@ -23,18 +20,6 @@ Page {
         MenuPage { title: menuItem.title }
       }
     }
-/*
-    NavigationItem {
-      id: teachPage
-      title: "Simple List"
-      icon: IconType.list
-
-      NavigationStack {
-        splitView: tablet
-        TeachPage { title: teachPage.title }
-      }
-    }
-    */
   }
 
   Component {

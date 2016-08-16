@@ -23,24 +23,22 @@ App {
     //Theme.normalFont = standardFont;
     //Theme.boldFont = boldFont;
 
-    Theme.colors.backgroundColor = "#333333";
-    Theme.colors.tintColor = "#ffd966";
+    Theme.colors.backgroundColor = "#404040";
+    Theme.colors.tintColor = "#eac879";
 
-    //Theme.navigationBar.height = app.width/10 // dp(50);
     Theme.navigationBar.titleColor = "white"
     Theme.navigationBar.titleAlignLeft = false;
     Theme.navigationBar.titleTextSize = sp(12);
-   // Theme.navigationBar.titleBottomMargin = sp(3)
     Theme.navigationBar.titleAlignBottom = false
     Theme.navigationBar.height = Theme.navigationBar.titleTextSize * 2.5
     Theme.navigationBar.itemColor = "white"
-    Theme.navigationBar.backgroundColor = "#333333"
+    Theme.navigationBar.backgroundColor = Theme.colors.backgroundColor
     Theme.navigationBar.dividerColor = "transparent"
 
     Theme.listItem.textColor = "white"
     Theme.listItem.dividerColor = "transparent"
-    Theme.listItem.minimumHeight = dp(40)
-    Theme.listItem.fontSizeText = dp(14)
+    Theme.listItem.minimumHeight = dp(50)
+    Theme.listItem.fontSizeText = dp(20)
     Theme.listItem.selectedBackgroundColor = Theme.colors.tintColor
     Theme.listItem.showDisclosure = false
 

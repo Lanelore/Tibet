@@ -36,7 +36,7 @@ Page {
     }
   }
 
-  // Drop a shadow on bottom of header
+  // Drop a shadow on bottom and below the header
   Rectangle {
     id: shadow
     anchors.top: parent.top
@@ -45,8 +45,24 @@ Page {
     height: dp(25)
 
     gradient: Gradient {
-      GradientStop { position: 0.0; color: "black" }
-      GradientStop { position: 0.4; color: "#30000000" }
+      GradientStop { position: 0.0; color: "#30000000" }
+      GradientStop { position: 0.4; color: "#10000000" }
+      GradientStop { position: 1.0; color: "transparent" }
+    }
+  }
+
+  // Drop a shadow on bottom and above the header
+  Rectangle {
+    id: shadow2
+    anchors.top: parent.top
+    anchors.left: parent.left
+    anchors.right: parent.right
+    height: dp(25)
+    z: 10000
+
+    gradient: Gradient {
+      GradientStop { position: 0.0; color: "#30000000" }
+      GradientStop { position: 0.4; color: "#10000000" }
       GradientStop { position: 1.0; color: "transparent" }
     }
   }
