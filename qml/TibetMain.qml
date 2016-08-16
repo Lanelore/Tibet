@@ -35,7 +35,14 @@ App {
     Theme.navigationBar.height = Theme.navigationBar.titleTextSize * 2.5
     Theme.navigationBar.itemColor = "white"
     Theme.navigationBar.backgroundColor = "#333333"
-    Theme.navigationBar.dividerColor = "transparent";
+    Theme.navigationBar.dividerColor = "transparent"
+
+    Theme.listItem.textColor = "white"
+    Theme.listItem.dividerColor = "transparent"
+    Theme.listItem.minimumHeight = dp(40)
+    Theme.listItem.fontSizeText = dp(14)
+    Theme.listItem.selectedBackgroundColor = Theme.colors.tintColor
+    Theme.listItem.showDisclosure = false
 
     // set white status bar for ios
     Theme.colors.statusBarStyle = Theme.colors.statusBarStyleWhite
