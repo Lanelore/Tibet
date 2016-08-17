@@ -1,4 +1,5 @@
 import QtQuick 2.0
+import VPlayApps 1.0
 
 ListView {
   id: moreView
@@ -7,11 +8,24 @@ ListView {
 
   delegate: RowBase {
     id: row
-    text: modelData
     anchors.left: parent.left
     anchors.right: parent.right
     style.backgroundColor: moreView.getColor(index + 1)
-    onSelected: moreView.option(index)
+    onSelected: moreView.option(index, locked, modelData.text, modelData.track, modelData.background)
+
+    iconSource: locked ? IconType.lock : ""
+
+    property bool locked: {
+      if (modelData.locked != null){
+        return modelData.locked
+      }
+
+      if (navigationStack.currentTitle == "meditation" && localStorage.unlocked < optionSelected){
+        return true
+      } else {
+        return false
+      }
+    }
   }
 
   function option(pos){}
