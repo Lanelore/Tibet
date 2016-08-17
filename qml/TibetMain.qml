@@ -17,12 +17,36 @@ App {
   //  * Add plugins to monetize, analyze & improve your apps (available with the Pro Licenses)
   //licenseKey: "<generate one from http://v-play.net/licenseKey>"
 
+  property int optionSelected: 1
+
   TibetMainPage { }
+
+  // other scenes are loaded at runtime, when finished menu is shown
+  Loader {
+    anchors.fill: parent
+    id: mainItemLoader
+    onLoaded: {
+      if(item) {
+        splash.opacity = 0;
+      }
+    }
+
+    // start loading other scenes after 50 ms
+    Timer {
+      running: true
+      interval: 50
+      onTriggered: mainItemLoader.source = Qt.resolvedUrl("TibetMainPage.qml")
+    }
+  }
+
+  SplashPage {
+    id: splash
+  }
 
   // main text font
   FontLoader {
     id: standardFont
-    source: "../assets/fonts/HighThin.ttf"
+    source: "../assets/fonts/Walkway.ttf"
   }
 
   onInitTheme: {
@@ -44,12 +68,32 @@ App {
 
     Theme.listItem.textColor = "white"
     Theme.listItem.dividerColor = "transparent"
-    Theme.listItem.minimumHeight = dp(50)
+    Theme.listItem.minimumHeight = sp(50)
     Theme.listItem.fontSizeText = sp(20)
     Theme.listItem.selectedBackgroundColor = Theme.colors.tintColor
     Theme.listItem.showDisclosure = false
+    Theme.listItem.iconSize = dp(20)
 
     // set white status bar for ios
     Theme.colors.statusBarStyle = Theme.colors.statusBarStyleWhite
+  }
+
+  // define Storage item for loading/storing key-value data
+  // ask the user for feedback after opening the app 5 times
+  Storage {
+    id: localStorage
+
+    property int unlocked: 5
+
+    // update app starts counter
+    Component.onCompleted: {
+      // uncomment this to clear the storage
+      //localStorage.clearValue("unlocked")
+
+      var stored = localStorage.getValue(unlocked)
+      if (stored > 5){
+        unlocked = stored
+      }
+    }
   }
 }
