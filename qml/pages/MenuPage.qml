@@ -6,19 +6,18 @@ import "../components"
 
 PageBase {
   id: menuPage
-  title: "Menu"
 
   Image {
     fillMode: Image.PreserveAspectCrop
     anchors.fill: parent
-    source: "../../assets/Sunset.jpg"
+    source: "../../assets/images/Sunset.jpg"
   }
 
   ListViewBase {
-    model: [ "Teach Me", "Haus", "Katze", "Meditieren" ]
-    menuColor: "#666666"
+    model: [ "meditations", "teach me about", "help us to help", "how to meditate" ]
+    menuColor: "#695230"
     interactive: false
-    anchors.bottom: parent.bottom
+    anchors.bottom: bottomItem.top
     anchors.left: parent.left
     anchors.right: parent.right
     height: children[0].height
@@ -27,7 +26,7 @@ PageBase {
       console.debug("Selected custom option: " + pos)
       switch(pos) {
       case 0:
-        navigationStack.push(teachPageComponent, {})
+        navigationStack.push(meditationPageComponent, {})
         break;
       case 1:
         break;
