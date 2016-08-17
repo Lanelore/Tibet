@@ -1,10 +1,13 @@
 import QtQuick 2.0
 import VPlayApps 1.0
+import QtGraphicalEffects 1.0
 import "../components"
 
 PageBase {
   id: meditationPage
   title: "meditations"
+
+  property int optionSelected: 1
 
   ListViewBase {
     anchors.top: parent.top
@@ -36,23 +39,62 @@ PageBase {
     anchors.bottom: parent.bottom
     anchors.left: parent.left
     anchors.right: parent.right
-    height: dp(50)
+    height: dp(60)
     z: 10
-  }
 
-  Icon {
+    MouseArea {
+      anchors.fill: parent
+    }
 
-  }
+    Row {
+      anchors.horizontalCenter: parent.horizontalCenter
+      anchors.bottom: parent.bottom
+      anchors.bottomMargin: -dp(10)
+      spacing: 0
 
-  Text {
-    text: "5"
-    color: "white"
-    font.family: standardFont.name
-    font.pixelSize: sp(24)
-    font.bold: true
-    anchors.horizontalCenter: parent.horizontalCenter
-    anchors.bottom: parent.bottom
-    anchors.bottomMargin: dp(10)
-    z: 10
+      Icon {
+        size: sp(30)
+        color: "white"
+        width: meditationPage.width/5
+        height: width
+        icon: IconType.clocko
+      }
+
+      MinuteOption {
+        width: meditationPage.width/5
+        number: 1
+        active: optionSelected == number
+        onSelected: {
+          optionSelected = number
+        }
+      }
+
+      MinuteOption {
+        width: meditationPage.width/5
+        number: 5
+        active: optionSelected == number
+        onSelected: {
+          optionSelected = number
+        }
+      }
+
+      MinuteOption {
+        width: meditationPage.width/5
+        number: 10
+        active: optionSelected == number
+        onSelected: {
+          optionSelected = number
+        }
+      }
+
+      MinuteOption {
+        width: meditationPage.width/5
+        number: 15
+        active: optionSelected == number
+        onSelected: {
+          optionSelected = number
+        }
+      }
+    }
   }
 }

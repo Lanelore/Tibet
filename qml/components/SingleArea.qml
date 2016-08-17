@@ -6,7 +6,7 @@ MouseArea {
 
   property var click: function () {};
 
-  onClicked: {
+  onPressed: {
     if (singleTimer.running) return;
     singleTimer.start()
     click()
