@@ -5,91 +5,109 @@ import "../components"
 
 PageBase {
   id: meditationPage
-  title: "meditations"
+  title: "meditation"
 
-  property int optionSelected: 1
+  bigFooter.visible: true
+
+  property var model1: [
+    {text: "Option1", track: "Option1.mp3", background: "Sunset.png"},
+    {text: "Option2", track: "Option2.mp3", background: "Boat.png"},
+    {text: "Option3", track: "Option2.mp3"},
+    {text: "Option4", track: "Option2.mp3"},
+    {text: "Option5", track: "Option2.mp3"},
+    {text: "Option6", track: "Option2.mp3"},
+    {text: "Option7", track: "Option2.mp3"},
+    {text: "Option8", track: "Option2.mp3"}
+  ]
+
+  property var model5: [
+    {text: "FiveMinutes123456789012345678", track: "Option1.mp3"},
+    {text: "FiveMinutes2", track: "Option2.mp3"},
+    {text: "FiveMinutes3", track: "Option2.mp3"},
+    {text: "FiveMinutes4321234567890", track: "Option2.mp3", locked: localStorage.unlocked <= 5},
+    {text: "Five5", track: "Option2.mp3", locked: localStorage.unlocked <= 5},
+    {text: "FiveMinutes6", track: "Option2.mp3", locked: localStorage.unlocked <= 5},
+  ]
+
+  property var model10: [
+    {text: "TenMinutes1", track: "Option1.mp3"},
+    {text: "TenMinutes2", track: "Option2.mp3"},
+    {text: "TenMinutes3", track: "Option2.mp3"},
+    {text: "TenMinutes4", track: "Option2.mp3"},
+    {text: "TenMinutes5", track: "Option2.mp3"},
+    {text: "TenMinutes6", track: "Option2.mp3"},
+    {text: "TenMinutes7", track: "Option2.mp3"},
+    {text: "TenMinutes8", track: "Option2.mp3"}
+  ]
+
+  property var model15: [
+    {text: "Fifteen1", track: "Option1.mp3"},
+    {text: "Fifteen2", track: "Option2.mp3"},
+    {text: "Fifteen3", track: "Option2.mp3"},
+  ]
 
   ListViewBase {
     anchors.top: parent.top
     anchors.left: parent.left
     anchors.right: parent.right
-    anchors.bottom: minuteSelection.top
-    model: [ "Standort ändern", "Haus", "Katze", "Meditieren", "Hund", "Karotte", "Koala" ]
+    anchors.bottom: bigFooter.top
+    model: {
+      switch (optionSelected) {
+      case 1:
+        return model1
+      case 5:
+        return model5
+      case 10:
+        return model10
+      case 15:
+        return model15
+      }
+    }
+
     menuColor: "#695230"
 
-    function option(pos){
+    function option(pos, locked, title, track, background){
       console.debug("Selected custom option: " + pos)
-      switch(pos) {
-      case 0:
-        break;
-      case 1:
-        break;
-      case 2:
-        break;
-      case 3:
-        break;
+
+      if (!locked){
+        // push component with modelData text, image and sound file
+        console.debug("Switch To Audio Player")
+        console.debug("Title: " + title + ", Track: " + track + ", Background: " + background)
+        navigationStack.push(audioPageComponent, {title: title, track: track, background: background})
+        //{text: "Option1", track: "Option1.mp3", background: "Sunset.png"}
+      } else {
+        console.debug("Switch to Donation Window")
       }
     }
   }
 
-  // the footer on the bottom
-  Rectangle {
-    id: minuteSelection
-    color: Theme.colors.backgroundColor
+  Row {
+    anchors.horizontalCenter: parent.horizontalCenter
     anchors.bottom: parent.bottom
-    anchors.left: parent.left
-    anchors.right: parent.right
-    height: dp(60)
+    anchors.bottomMargin: dp(7)
+    spacing: 0
+    height: children[1].height
     z: 10
 
-    MouseArea {
-      anchors.fill: parent
+    Item {
+      width: meditationPage.width/5
+      height: parent.height
+
+      Image {
+        sourceSize.width: sp(26)
+        sourceSize.height: dp(26)
+        source: "../../assets/images/Clock.png"
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: dp(7)
+      }
     }
 
-    Row {
-      anchors.horizontalCenter: parent.horizontalCenter
-      anchors.bottom: parent.bottom
-      anchors.bottomMargin: -dp(10)
-      spacing: 0
-
-      Icon {
-        size: sp(30)
-        color: "white"
+    Repeater {
+      model: [1, 5, 10, 15]
+      delegate: MinuteOption {
         width: meditationPage.width/5
-        height: width
-        icon: IconType.clocko
-      }
-
-      MinuteOption {
-        width: meditationPage.width/5
-        number: 1
-        active: optionSelected == number
-        onSelected: {
-          optionSelected = number
-        }
-      }
-
-      MinuteOption {
-        width: meditationPage.width/5
-        number: 5
-        active: optionSelected == number
-        onSelected: {
-          optionSelected = number
-        }
-      }
-
-      MinuteOption {
-        width: meditationPage.width/5
-        number: 10
-        active: optionSelected == number
-        onSelected: {
-          optionSelected = number
-        }
-      }
-
-      MinuteOption {
-        width: meditationPage.width/5
-        number: 15
+        number: modelData
         active: optionSelected == number
         onSelected: {
           optionSelected = number

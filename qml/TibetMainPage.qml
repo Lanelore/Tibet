@@ -13,7 +13,7 @@ Page {
 
     NavigationItem {
       id: menuItem
-      //title: "tibetan buddhist meditations"
+      title: "tibetan buddhist meditations"
       icon: IconType.calculator
 
       NavigationStack {
@@ -25,5 +25,10 @@ Page {
   Component {
     id: meditationPageComponent
     MeditationPage {}
+  }
+
+  Component {
+    id: audioPageComponent
+    AudioPage {}
   }
 }
