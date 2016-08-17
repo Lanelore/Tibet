@@ -20,7 +20,7 @@ Item {
 
   Column {
     id: minuteColumn
-    spacing: dp(5)
+    spacing: dp(4)
     width: dp(20)
     anchors.centerIn: parent
 
@@ -29,24 +29,34 @@ Item {
       width: number.width
       height: width
       icon: IconType.caretdown
+      scale: 1.5
       anchors.horizontalCenter: parent.horizontalCenter
       opacity: minuteOption.active ? 1.0 : 0
+
+      Behavior on opacity {
+        NumberAnimation {easing.type: Easing.InOutQuad; duration: 200}
+      }
     }
 
     Text {
       text: number
+      horizontalAlignment: Text.AlignHCenter
       color: "white"
       font.family: standardFont.name
-      font.pixelSize: sp(30)
+      font.pixelSize: sp(36)
       font.bold: true
       anchors.horizontalCenter: parent.horizontalCenter
 
       Image {
         anchors.centerIn: parent
         source: "../../assets/images/Blur.png"
-        width: dp(50)
-        fillMode: Image.PreserveAspectFit
+        width: dp(40)
+        height: dp(45)
         opacity: minuteOption.active ? 0.15 : 0
+
+        Behavior on opacity {
+          NumberAnimation {easing.type: Easing.InOutQuad; duration: 200}
+        }
       }
     }
   }

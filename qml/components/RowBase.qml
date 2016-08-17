@@ -151,7 +151,9 @@ Item {
         Text {
           id: textLabel
           elide: Text.ElideRight
+          width: parent.width
           maximumLineCount: 1
+          horizontalAlignment: Text.AlignHCenter
           color: active ? cell.style.activeTextColor : cell.style.textColor
           font.family: Theme.normalFont.name
           font.bold: true
