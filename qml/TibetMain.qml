@@ -53,7 +53,7 @@ App {
     Theme.normalFont = standardFont;
     //Theme.boldFont = boldFont;
 
-    Theme.colors.backgroundColor = "#404040";
+    Theme.colors.backgroundColor = "#333333";
     Theme.colors.tintColor = "#eac879";
 
     Theme.navigationBar.titleColor = "white"

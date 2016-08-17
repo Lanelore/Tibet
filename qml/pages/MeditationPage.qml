@@ -10,40 +10,40 @@ PageBase {
   bigFooter.visible: true
 
   property var model1: [
-    {text: "Option1", track: "Option1.mp3", background: "Sunset.png"},
-    {text: "Option2", track: "Option2.mp3", background: "Boat.png"},
-    {text: "Option3", track: "Option2.mp3"},
-    {text: "Option4", track: "Option2.mp3"},
-    {text: "Option5", track: "Option2.mp3"},
-    {text: "Option6", track: "Option2.mp3"},
-    {text: "Option7", track: "Option2.mp3"},
-    {text: "Option8", track: "Option2.mp3"}
+    {text: "Breeze", detail: "The Colors Of The Wind", track: "Breeze.mp3", background: "Sunset.png"},
+    {text: "Memories", detail: "Good Old Times", track: "Memories.mp3", background: "Boat.png"},
+    {text: "Option3"},
+    {text: "Option4"},
+    {text: "Option5"},
+    {text: "Option6"},
+    {text: "Option7"},
+    {text: "Option8"}
   ]
 
   property var model5: [
-    {text: "FiveMinutes123456789012345678", track: "Option1.mp3"},
-    {text: "FiveMinutes2", track: "Option2.mp3"},
-    {text: "FiveMinutes3", track: "Option2.mp3"},
-    {text: "FiveMinutes4321234567890", track: "Option2.mp3", locked: localStorage.unlocked <= 5},
-    {text: "Five5", track: "Option2.mp3", locked: localStorage.unlocked <= 5},
-    {text: "FiveMinutes6", track: "Option2.mp3", locked: localStorage.unlocked <= 5},
+    {text: "FiveMinutes123456789012345678"},
+    {text: "FiveMinutes2"},
+    {text: "FiveMinutes3"},
+    {text: "FiveMinutes4321234567890", locked: localStorage.unlocked <= 5},
+    {text: "Five5", locked: localStorage.unlocked <= 5},
+    {text: "FiveMinutes6", locked: localStorage.unlocked <= 5},
   ]
 
   property var model10: [
-    {text: "TenMinutes1", track: "Option1.mp3"},
-    {text: "TenMinutes2", track: "Option2.mp3"},
-    {text: "TenMinutes3", track: "Option2.mp3"},
-    {text: "TenMinutes4", track: "Option2.mp3"},
-    {text: "TenMinutes5", track: "Option2.mp3"},
-    {text: "TenMinutes6", track: "Option2.mp3"},
-    {text: "TenMinutes7", track: "Option2.mp3"},
-    {text: "TenMinutes8", track: "Option2.mp3"}
+    {text: "TenMinutes1"},
+    {text: "TenMinutes2"},
+    {text: "TenMinutes3"},
+    {text: "TenMinutes4"},
+    {text: "TenMinutes5"},
+    {text: "TenMinutes6"},
+    {text: "TenMinutes7"},
+    {text: "TenMinutes8"}
   ]
 
   property var model15: [
-    {text: "Fifteen1", track: "Option1.mp3"},
-    {text: "Fifteen2", track: "Option2.mp3"},
-    {text: "Fifteen3", track: "Option2.mp3"},
+    {text: "Fifteen1"},
+    {text: "Fifteen2"},
+    {text: "Fifteen3"},
   ]
 
   ListViewBase {
@@ -66,15 +66,12 @@ PageBase {
 
     menuColor: "#695230"
 
-    function option(pos, locked, title, track, background){
+    function option(pos, locked, title, detail, track, background){
       console.debug("Selected custom option: " + pos)
 
       if (!locked){
-        // push component with modelData text, image and sound file
-        console.debug("Switch To Audio Player")
-        console.debug("Title: " + title + ", Track: " + track + ", Background: " + background)
-        navigationStack.push(audioPageComponent, {title: title, track: track, background: background})
-        //{text: "Option1", track: "Option1.mp3", background: "Sunset.png"}
+        // push component with modelData text, image, sound file and more
+        navigationStack.push(audioPageComponent, {title: title, detail: detail, track: track, background: background, length: optionSelected})
       } else {
         console.debug("Switch to Donation Window")
       }
@@ -94,7 +91,8 @@ PageBase {
       height: parent.height
 
       Image {
-        sourceSize.width: sp(26)
+        id: clockImage
+        sourceSize.width: dp(26)
         sourceSize.height: dp(26)
         source: "../../assets/images/Clock.png"
         anchors.horizontalCenter: parent.horizontalCenter

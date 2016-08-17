@@ -11,7 +11,7 @@ ListView {
     anchors.left: parent.left
     anchors.right: parent.right
     style.backgroundColor: moreView.getColor(index + 1)
-    onSelected: moreView.option(index, locked, modelData.text, modelData.track, modelData.background)
+    onSelected: moreView.option(index, locked, modelData.text, modelData.detail, modelData.track, modelData.background)
 
     iconSource: locked ? IconType.lock : ""
 

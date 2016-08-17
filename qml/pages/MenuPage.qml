@@ -42,7 +42,7 @@ PageBase {
     anchors.right: parent.right
     height: children[0].height
 
-    function option(pos, locked){
+    function option(pos){
       console.debug("Selected custom option: " + pos)
       switch(pos) {
       case 0:
