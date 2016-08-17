@@ -6,6 +6,7 @@ Page {
 
   property alias leftItem: leftItem
   property alias rightItem: rightItem
+  property alias bottomItem: bottomItem
 
   leftBarItem: NavigationBarItem {
     id: leftItem
@@ -58,12 +59,23 @@ Page {
     anchors.left: parent.left
     anchors.right: parent.right
     height: dp(25)
-    z: 10000
+    z: 10
 
     gradient: Gradient {
       GradientStop { position: 0.0; color: "#30000000" }
       GradientStop { position: 0.4; color: "#10000000" }
       GradientStop { position: 1.0; color: "transparent" }
     }
+  }
+
+  // the footer on the bottom
+  Rectangle {
+    id: bottomItem
+    color: Theme.colors.backgroundColor
+    anchors.bottom: parent.bottom
+    anchors.left: parent.left
+    anchors.right: parent.right
+    height: dp(20)
+    z: 10
   }
 }
