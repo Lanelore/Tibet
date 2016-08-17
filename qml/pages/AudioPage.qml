@@ -37,6 +37,7 @@ PageBase {
     anchors.bottomMargin: bigFooter.height * 0.75
     z: 10
     radius: 3
+    opacity: 0.8
 
     Rectangle {
       color: "grey"
