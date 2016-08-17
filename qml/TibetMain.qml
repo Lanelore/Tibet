@@ -19,8 +19,14 @@ App {
 
   TibetMainPage { }
 
+  // main text font
+  FontLoader {
+    id: standardFont
+    source: "../assets/fonts/HighThin.ttf"
+  }
+
   onInitTheme: {
-    //Theme.normalFont = standardFont;
+    Theme.normalFont = standardFont;
     //Theme.boldFont = boldFont;
 
     Theme.colors.backgroundColor = "#404040";
@@ -34,11 +40,12 @@ App {
     Theme.navigationBar.itemColor = "white"
     Theme.navigationBar.backgroundColor = Theme.colors.backgroundColor
     Theme.navigationBar.dividerColor = "transparent"
+    Theme.navigationBar.titleTextBold = true
 
     Theme.listItem.textColor = "white"
     Theme.listItem.dividerColor = "transparent"
     Theme.listItem.minimumHeight = dp(50)
-    Theme.listItem.fontSizeText = dp(20)
+    Theme.listItem.fontSizeText = sp(20)
     Theme.listItem.selectedBackgroundColor = Theme.colors.tintColor
     Theme.listItem.showDisclosure = false
 

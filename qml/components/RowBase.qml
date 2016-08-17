@@ -154,6 +154,7 @@ Item {
           maximumLineCount: 1
           color: active ? cell.style.activeTextColor : cell.style.textColor
           font.family: Theme.normalFont.name
+          font.bold: true
           font.pixelSize: sp(cell.style.fontSizeText)
           text: cell.text
 
