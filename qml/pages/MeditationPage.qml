@@ -1,11 +1,10 @@
 import QtQuick 2.0
 import VPlayApps 1.0
-import QtGraphicalEffects 1.0
 import "../components"
 
 PageBase {
   id: meditationPage
-  title: "meditation"
+  title: "meditations"
 
   property bool donationWindow: false
 
@@ -23,12 +22,12 @@ PageBase {
   ]
 
   property var model5: [
-    {text: "FiveMinutes123456789012345678"},
-    {text: "FiveMinutes2"},
-    {text: "FiveMinutes3"},
-    {text: "FiveMinutes4321234567890", locked: localStorage.unlocked <= 5},
-    {text: "Five5", locked: localStorage.unlocked <= 5},
-    {text: "FiveMinutes6", locked: localStorage.unlocked <= 5},
+    {text: "FiveMinutes123456789012345678", locked: false},
+    {text: "FiveMinutes2", locked: false},
+    {text: "FiveMinutes3", locked: false},
+    {text: "FiveMinutes4321234567890"},
+    {text: "Five5"},
+    {text: "FiveMinutes6"},
   ]
 
   property var model10: [
@@ -69,15 +68,13 @@ PageBase {
     menuColor: "#695230"
 
     function option(pos, locked, title, detail, track, background){
-      console.debug("Selected custom option: " + pos)
-
       if (!locked){
         // push component with modelData text, image, sound file and more
         navigationStack.push(audioPageComponent, {title: title, detail: detail, track: track, background: background, length: optionSelected})
       } else {
         // ask whether to switch to the donation menu or not
         donationWindow = true
-        nativeUtils.displayMessageBox(qsTr("You can unlock this track by donating to the Tibetan Buddhist Foundation!"), "", 2)
+        nativeUtils.displayMessageBox(qsTr("Unlock this track by donating to the Tibetan Buddhist Foundation!"), "", 2)
       }
     }
   }

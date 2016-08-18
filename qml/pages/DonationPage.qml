@@ -4,9 +4,10 @@ import "../components"
 
 PageBase {
   id: donationPage
+  title: "donation"
 
   Image {
-    id: splashImage
+    id: backgroundImage
     source: "../../assets/images/Forest.png"
     fillMode: Image.PreserveAspectCrop
     anchors.fill: parent
@@ -27,15 +28,22 @@ PageBase {
     height: children[0].height
 
     function option(pos){
-      console.debug("Selected custom option: " + pos)
       switch(pos) {
       case 0:
+        localStorage.unlocked = 5
+        localStorage.setValue("unlocked", 5)
         break;
       case 1:
+        localStorage.unlocked = 10
+        localStorage.setValue("unlocked", 10)
         break;
       case 2:
+        localStorage.unlocked = 15
+        localStorage.setValue("unlocked", 15)
         break;
       case 3:
+        localStorage.unlocked = 15
+        localStorage.setValue("unlocked", 15)
         break;
       }
     }

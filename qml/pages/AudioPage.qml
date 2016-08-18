@@ -7,6 +7,7 @@ import "../components"
 
 PageBase {
   id: audioPage
+  title: "meditation"
 
   bigFooter.visible: true
 

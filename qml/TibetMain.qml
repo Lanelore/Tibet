@@ -84,15 +84,16 @@ App {
   Storage {
     id: localStorage
 
-    property int unlocked: 5
+    // the app starts with only 1 minute tracks unlocked, with the exception of specific 5 minute tracks
+    property int unlocked: 1
 
     // update app starts counter
     Component.onCompleted: {
       // uncomment this to clear the storage
       //localStorage.clearValue("unlocked")
 
-      var stored = localStorage.getValue(unlocked)
-      if (stored > 5){
+      var stored = localStorage.getValue("unlocked")
+      if (stored > 1){
         unlocked = stored
       }
     }

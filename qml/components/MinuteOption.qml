@@ -1,6 +1,5 @@
 import QtQuick 2.0
 import VPlayApps 1.0
-import QtGraphicalEffects 1.0
 
 Item {
   id: minuteOption
@@ -20,16 +19,14 @@ Item {
 
   Column {
     id: minuteColumn
-    spacing: dp(4)
+    spacing: dp(3)
     width: dp(20)
     anchors.centerIn: parent
 
     Icon {
       color: "white"
-      width: number.width
-      height: width
       icon: IconType.caretdown
-      scale: 1.5
+      scale: 3
       anchors.horizontalCenter: parent.horizontalCenter
       opacity: minuteOption.active ? 1.0 : 0
 

@@ -36,4 +36,14 @@ Page {
     id: donationPageComponent
     DonationPage {}
   }
+
+  Component {
+    id: teachPageComponent
+    TeachPage {}
+  }
+
+  Component {
+    id: webPageComponent
+    WebPage {}
+  }
 }

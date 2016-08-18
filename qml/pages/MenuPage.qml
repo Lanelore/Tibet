@@ -47,13 +47,13 @@ PageBase {
     height: children[0].height
 
     function option(pos){
-      console.debug("Selected custom option: " + pos)
       switch(pos) {
       case 0:
         optionSelected = 1
         navigationStack.push(meditationPageComponent, {})
         break;
       case 1:
+        navigationStack.push(teachPageComponent, {})
         break;
       case 2:
         break;
@@ -63,16 +63,28 @@ PageBase {
     }
   }
 
-  // the menu scene is our start scene, so if back is pressed there we ask the user if he wants to quit the application
-  Connections {
-    target: getApplication()
-    onBackButtonPressedGlobally: {
+  Keys.onBackPressed: {
+    if (navigationStack.currentTitle == "tibetan buddhist meditations"){
+      console.debug("Title matches!")
       exitWindow = true
       nativeUtils.displayMessageBox(qsTr("Really quit the application?"), "", 2)
       event.accepted = true // consume the event
     }
   }
-
+  /*
+  // the menu scene is our start scene, so if back is pressed there we ask the user if he wants to quit the application
+  Connections {
+    target: getApplication()
+    onBackButtonPressedGlobally: {
+      if (navigationStack.currentTitle == "tibetan buddhist meditations"){
+        console.debug("Title matches!")
+        exitWindow = true
+        nativeUtils.displayMessageBox(qsTr("Really quit the application?"), "", 2)
+        event.accepted = true // consume the event
+      }
+    }
+  }
+*/
   // listen to the return value of the MessageBox
   Connections {
     target: nativeUtils

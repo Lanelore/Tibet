@@ -11,8 +11,16 @@ ListView {
     anchors.left: parent.left
     anchors.right: parent.right
     style.backgroundColor: moreView.getColor(index + 1)
-    onSelected: moreView.option(index, locked, modelData.text, modelData.detail, modelData.track, modelData.background)
-
+    onSelected:
+    {
+      if (navigationStack.currentTitle == "tibetan buddhist meditations"){
+        moreView.option(index)
+      } else if (navigationStack.currentTitle == "meditations"){
+        moreView.option(index, locked, modelData.text, modelData.detail, modelData.track, modelData.background)
+      } else if (navigationStack.currentTitle == "teach me about"){
+        moreView.option(index, modelData.text, modelData.url)
+      }
+    }
     iconSource: locked ? IconType.lock : ""
 
     property bool locked: {
@@ -20,7 +28,7 @@ ListView {
         return modelData.locked
       }
 
-      if (navigationStack.currentTitle == "meditation" && localStorage.unlocked < optionSelected){
+      if (navigationStack.currentTitle == "meditations" && localStorage.unlocked < optionSelected){
         return true
       } else {
         return false
@@ -28,7 +36,7 @@ ListView {
     }
   }
 
-  function option(pos){}
+  function option(){}
 
   function getColor(pos){
     var color
