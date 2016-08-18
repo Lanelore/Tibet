@@ -31,4 +31,9 @@ Page {
     id: audioPageComponent
     AudioPage {}
   }
+
+  Component {
+    id: donationPageComponent
+    DonationPage {}
+  }
 }

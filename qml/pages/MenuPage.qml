@@ -7,6 +7,8 @@ import "../components"
 PageBase {
   id: menuPage
 
+  property bool exitWindow: false
+
   leftBarItem: NavigationBarItem {
     id: leftItem
     width: leftIcon.width
@@ -18,6 +20,7 @@ PageBase {
       scale: 1.25
       click: function (){
         // ask if he really wants to exit the app
+        exitWindow = true
         nativeUtils.displayMessageBox(qsTr("Really quit the application?"), "", 2)
       }
     }
@@ -47,6 +50,7 @@ PageBase {
       console.debug("Selected custom option: " + pos)
       switch(pos) {
       case 0:
+        optionSelected = 1
         navigationStack.push(meditationPageComponent, {})
         break;
       case 1:
@@ -63,6 +67,7 @@ PageBase {
   Connections {
     target: getApplication()
     onBackButtonPressedGlobally: {
+      exitWindow = true
       nativeUtils.displayMessageBox(qsTr("Really quit the application?"), "", 2)
       event.accepted = true // consume the event
     }
@@ -73,7 +78,7 @@ PageBase {
     target: nativeUtils
     onMessageBoxFinished: {
       // only quit if coming from the quit dialog, e.g. the GameNetwork might also show a messageBox
-      if (accepted) {
+      if (accepted && exitWindow) {
         Qt.quit()
       }
     }

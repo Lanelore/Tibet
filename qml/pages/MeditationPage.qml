@@ -7,6 +7,8 @@ PageBase {
   id: meditationPage
   title: "meditation"
 
+  property bool donationWindow: false
+
   bigFooter.visible: true
 
   property var model1: [
@@ -74,6 +76,7 @@ PageBase {
         navigationStack.push(audioPageComponent, {title: title, detail: detail, track: track, background: background, length: optionSelected})
       } else {
         // ask whether to switch to the donation menu or not
+        donationWindow = true
         nativeUtils.displayMessageBox(qsTr("You can unlock this track by donating to the Tibetan Buddhist Foundation!"), "", 2)
       }
     }
@@ -83,13 +86,9 @@ PageBase {
   Connections {
     target: nativeUtils
     onMessageBoxFinished: {
-      if (accepted) {
-        // switch to the donation window
-
-
-
-
-//Hai
+      if (accepted && donationWindow) {
+        // switch to the donation page
+        navigationStack.push(donationPageComponent, {})
       }
     }
   }

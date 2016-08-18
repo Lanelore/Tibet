@@ -72,7 +72,7 @@ PageBase {
       font.bold: true
       text: title ? title : "Meditation"
       elide: Text.ElideRight
-      width: parent.width * 0.8
+      width: parent.width - timeRow.width * 1.5
     }
 
     Text {
@@ -91,6 +91,7 @@ PageBase {
   }
 
   Row {
+    id: timeRow
     spacing: dp(6)
     anchors.right: parent.right
     anchors.rightMargin: dp(10)

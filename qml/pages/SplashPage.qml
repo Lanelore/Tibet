@@ -26,7 +26,7 @@ PageBase {
     font.bold: true
     anchors.horizontalCenter: parent.horizontalCenter
     anchors.top: parent.top
-    anchors.topMargin: dp(80)
+    anchors.topMargin: dp(100)
     z: 10
   }
 }
