@@ -18,6 +18,7 @@ PageBase {
       scale: 1.25
       click: function (){
         // ask if he really wants to exit the app
+        nativeUtils.displayMessageBox(qsTr("Really quit the application?"), "", 2)
       }
     }
   }
@@ -59,8 +60,12 @@ PageBase {
   }
 
   // the menu scene is our start scene, so if back is pressed there we ask the user if he wants to quit the application
-  Keys.onBackPressed: {
-    nativeUtils.displayMessageBox(qsTr("Really quit the application?"), "", 2)
+  Connections {
+    target: getApplication()
+    onBackButtonPressedGlobally: {
+      nativeUtils.displayMessageBox(qsTr("Really quit the application?"), "", 2)
+      event.accepted = true // consume the event
+    }
   }
 
   // listen to the return value of the MessageBox

@@ -68,11 +68,11 @@ App {
 
     Theme.listItem.textColor = "white"
     Theme.listItem.dividerColor = "transparent"
-    Theme.listItem.minimumHeight = sp(50)
-    Theme.listItem.fontSizeText = sp(20)
+    Theme.listItem.minimumHeight = sp(40)
+    Theme.listItem.fontSizeText = sp(16)
     Theme.listItem.selectedBackgroundColor = Theme.colors.tintColor
     Theme.listItem.showDisclosure = false
-    Theme.listItem.iconSize = dp(20)
+    Theme.listItem.iconSize = Theme.listItem.fontSizeText
 
     // set white status bar for ios
     Theme.colors.statusBarStyle = Theme.colors.statusBarStyleWhite

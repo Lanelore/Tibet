@@ -73,7 +73,23 @@ PageBase {
         // push component with modelData text, image, sound file and more
         navigationStack.push(audioPageComponent, {title: title, detail: detail, track: track, background: background, length: optionSelected})
       } else {
-        console.debug("Switch to Donation Window")
+        // ask whether to switch to the donation menu or not
+        nativeUtils.displayMessageBox(qsTr("You can unlock this track by donating to the Tibetan Buddhist Foundation!"), "", 2)
+      }
+    }
+  }
+
+  // listen to the return value of the MessageBox
+  Connections {
+    target: nativeUtils
+    onMessageBoxFinished: {
+      if (accepted) {
+        // switch to the donation window
+
+
+
+
+//Hai
       }
     }
   }

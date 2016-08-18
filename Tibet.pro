@@ -5,12 +5,11 @@ qmlFolder.source = qml
 DEPLOYMENTFOLDERS += qmlFolder # comment for publishing
 
 assetsFolder.source = assets
-DEPLOYMENTFOLDERS += assetsFolder # uncomment if you add any assets to the project
+DEPLOYMENTFOLDERS += assetsFolder
 
 # Add more folders to ship with the application here
 
-RESOURCES += \
-#    resources_tibet.qrc # uncomment for publishing
+RESOURCES += #    resources.qrc # uncomment for publishing
 
 # NOTE: for PUBLISHING, perform the following steps:
 # 1. comment the DEPLOYMENTFOLDERS += qmlFolder line above, to avoid shipping your qml files with the application (instead they get compiled to the app binary)
@@ -26,11 +25,19 @@ RESOURCES += \
 SOURCES += main.cpp
 
 android {
-  ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android
-  OTHER_FILES += android/AndroidManifest.xml
+    ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android
+    OTHER_FILES += android/AndroidManifest.xml
 }
 
 ios {
-  QMAKE_INFO_PLIST = ios/Project-Info.plist
-  OTHER_FILES += $$QMAKE_INFO_PLIST
+    QMAKE_INFO_PLIST = ios/Project-Info.plist
+    OTHER_FILES += $$QMAKE_INFO_PLIST
+}
+
+# set application icons for win and macx
+win32 {
+    RC_FILE += win/app_icon.rc
+}
+macx {
+    ICON = macx/app_icon.icns
 }
