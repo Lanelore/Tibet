@@ -26,7 +26,7 @@ Item {
     Icon {
       color: "white"
       icon: IconType.caretdown
-      scale: 3
+      scale: 1.5
       anchors.horizontalCenter: parent.horizontalCenter
       opacity: minuteOption.active ? 1.0 : 0
 
