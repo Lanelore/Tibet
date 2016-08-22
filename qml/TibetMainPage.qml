@@ -46,4 +46,14 @@ Page {
     id: webPageComponent
     WebPage {}
   }
+
+  Component {
+    id: helpPageComponent
+    HelpPage {}
+  }
+
+  Component {
+    id: aboutPageComponent
+    AboutPage {}
+  }
 }

@@ -56,6 +56,8 @@ PageBase {
         navigationStack.push(teachPageComponent, {})
         break;
       case 2:
+      case 1:
+        navigationStack.push(helpPageComponent, {})
         break;
       case 3:
         break;
