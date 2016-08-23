@@ -56,4 +56,9 @@ Page {
     id: aboutPageComponent
     AboutPage {}
   }
+
+  Component {
+    id: howToPageComponent
+    HowToPage {}
+  }
 }

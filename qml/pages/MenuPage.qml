@@ -60,6 +60,7 @@ PageBase {
         navigationStack.push(helpPageComponent, {})
         break;
       case 3:
+        navigationStack.push(howToPageComponent, {})
         break;
       }
     }
@@ -73,20 +74,7 @@ PageBase {
       event.accepted = true // consume the event
     }
   }
-  /*
-  // the menu scene is our start scene, so if back is pressed there we ask the user if he wants to quit the application
-  Connections {
-    target: getApplication()
-    onBackButtonPressedGlobally: {
-      if (navigationStack.currentTitle == "tibetan buddhist meditations"){
-        console.debug("Title matches!")
-        exitWindow = true
-        nativeUtils.displayMessageBox(qsTr("Really quit the application?"), "", 2)
-        event.accepted = true // consume the event
-      }
-    }
-  }
-*/
+
   // listen to the return value of the MessageBox
   Connections {
     target: nativeUtils
