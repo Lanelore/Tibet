@@ -10,7 +10,34 @@ PageBase {
 
   bigFooter.visible: true
 
-  property var mainModel: [
+  // without Death process
+  property var shortModel: [
+    {text: "8 Worldly concerns", detail: "Please add a detailled description", background: "Sunset.png"},
+    {text: "Compassionate mind", detail: "Please add a detailled description", background: "Boat.png"},
+    {text: "Equanimity", detail: "Please add a detailled description"},
+    {text: "Taking and giving others", detail: "Please add a detailled description"},
+    {text: "May you be happy", detail: "Please add a detailled description"},
+    {text: "Breathing meditation", detail: "Please add a detailled description"},
+    {text: "Human rebirth", detail: "Please add a detailled description"},
+    {text: "I meditation", detail: "Please add a detailled description"},
+    {text: "Emptiness", detail: "Please add a detailled description"},
+    {text: "Breathing delusions", detail: "Please add a detailled description"},
+    {text: "Love for all beings", detail: "Please add a detailled description"},
+    {text: "The mind of love", detail: "Please add a detailled description"},
+    {text: "Karma", detail: "Please add a detailled description"},
+    {text: "Impermanence", detail: "Please add a detailled description"},
+    {text: "Bodhichitta", detail: "Please add a detailled description"},
+    {text: "Thought transformation", detail: "Please add a detailled description"},
+    {text: "Taking and giving self", detail: "Please add a detailled description"},
+    {text: "Mothers kindness", detail: "Please add a detailled description"},
+    {text: "Kindness to all being", detail: "Please add a detailled description"},
+    {text: "Refuge", detail: "Please add a detailled description"},
+    {text: "Guru", detail: "Please add a detailled description"},
+    {text: "Guru 2", detail: "Please add a detailled description"}
+  ]
+
+  // with Death process
+  property var longModel: [
     {text: "8 Worldly concerns", detail: "Please add a detailled description", background: "Sunset.png"},
     {text: "Compassionate mind", detail: "Please add a detailled description", background: "Boat.png"},
     {text: "Equanimity", detail: "Please add a detailled description"},
@@ -79,7 +106,12 @@ PageBase {
     anchors.right: parent.right
     anchors.bottom: bigFooter.top
     model: {
-      return mainModel
+      // The audio file Death process is only available in 10 and 15 minutes length
+      if (optionSelected >= 10){
+        return longModel
+      } else {
+        return shortModel
+      }
       /*
       switch (optionSelected) {
       case 1:

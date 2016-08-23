@@ -26,8 +26,8 @@ PageBase {
 
       Image {
         source: "../../assets/images/Namgyel.png"
-        width: parent.width
-        fillMode: Image.PreserveAspectFit
+        width: aboutPage.width
+        fillMode: Image.PreserveAspectCrop
       }
 
       Item {

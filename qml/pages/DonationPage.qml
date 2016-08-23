@@ -42,6 +42,7 @@ PageBase {
         localStorage.setValue("unlocked", 15)
         break;
       case 3:
+        console.debug("Unlock all!")
         localStorage.unlocked = 15
         localStorage.setValue("unlocked", 15)
         break;

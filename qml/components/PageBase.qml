@@ -36,7 +36,7 @@ Page {
       iconSize: dp(Theme.navigationBar.titleTextSize)
       icon: IconType.questioncircle
       click: function (){
-        navigationStack.push(helpPageComponent, {})
+        navigationStack.popAllExceptFirstAndPush(helpPageComponent, {})
       }
     }
   }

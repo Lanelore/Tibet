@@ -26,8 +26,8 @@ PageBase {
 
       Image {
         source: "../../assets/images/Help.png"
-        width: parent.width
-        fillMode: Image.PreserveAspectFit
+        width: helpPage.width
+        fillMode: Image.PreserveAspectCrop
       }
 
       RowBase {

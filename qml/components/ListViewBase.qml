@@ -11,9 +11,10 @@ ListView {
     anchors.left: parent.left
     anchors.right: parent.right
     style.backgroundColor: moreView.getColor(index + 1)
+    iconSource: locked ? IconType.lock : ""
     onSelected:
     {
-      if (navigationStack.currentTitle == "tibetan buddhist meditations"){
+      if (navigationStack.currentTitle == "tibetan buddhist meditations" || navigationStack.currentTitle == "donation"){
         moreView.option(index)
       } else if (navigationStack.currentTitle == "meditations"){
         moreView.option(index, locked, modelData.text, modelData.detail, modelData.track, modelData.background)
@@ -21,7 +22,6 @@ ListView {
         moreView.option(index, modelData.text, modelData.url)
       }
     }
-    iconSource: locked ? IconType.lock : ""
 
     property bool locked: {
       if (modelData.locked != null){
