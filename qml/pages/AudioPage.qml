@@ -15,7 +15,6 @@ PageBase {
   property string detail
   property string track
   property string background
-  property int length
 
   Image {
     fillMode: Image.PreserveAspectCrop
@@ -25,7 +24,7 @@ PageBase {
 
   MediaPlayer {
     id: mediaplayer
-    source: track != "" ? "../../assets/audio/" + track : "../../assets/audio/Breeze.mp3"
+    source: track != "" ? track : "../../assets/audio/" + title + " - " + optionSelected + ".mp3"
     Component.onCompleted: play()
   }
 
@@ -115,7 +114,7 @@ PageBase {
       font.family: standardFont.name
       font.pixelSize: sp(20)
       font.bold: true
-      text: length ? length : 3
+      text: optionSelected
     }
   }
 }

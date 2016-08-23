@@ -10,6 +10,32 @@ PageBase {
 
   bigFooter.visible: true
 
+  property var mainModel: [
+    {text: "8 Worldly concerns", detail: "Please add a detailled description", background: "Sunset.png"},
+    {text: "Compassionate mind", detail: "Please add a detailled description", background: "Boat.png"},
+    {text: "Equanimity", detail: "Please add a detailled description"},
+    {text: "Death process", detail: "Please add a detailled description"},
+    {text: "Taking and giving others", detail: "Please add a detailled description"},
+    {text: "May you be happy", detail: "Please add a detailled description"},
+    {text: "Breathing meditation", detail: "Please add a detailled description"},
+    {text: "Human rebirth", detail: "Please add a detailled description"},
+    {text: "I meditation", detail: "Please add a detailled description"},
+    {text: "Emptiness", detail: "Please add a detailled description"},
+    {text: "Breathing delusions", detail: "Please add a detailled description"},
+    {text: "Love for all beings", detail: "Please add a detailled description"},
+    {text: "The mind of love", detail: "Please add a detailled description"},
+    {text: "Karma", detail: "Please add a detailled description"},
+    {text: "Impermanence", detail: "Please add a detailled description"},
+    {text: "Bodhichitta", detail: "Please add a detailled description"},
+    {text: "Thought transformation", detail: "Please add a detailled description"},
+    {text: "Taking and giving self", detail: "Please add a detailled description"},
+    {text: "Mothers kindness", detail: "Please add a detailled description"},
+    {text: "Kindness to all being", detail: "Please add a detailled description"},
+    {text: "Refuge", detail: "Please add a detailled description"},
+    {text: "Guru", detail: "Please add a detailled description"},
+    {text: "Guru 2", detail: "Please add a detailled description"}
+  ]
+
   property var model1: [
     {text: "Breeze", detail: "The Colors Of The Wind", track: "Breeze.mp3", background: "Sunset.png"},
     {text: "Memories", detail: "Good Old Times", track: "Memories.mp3", background: "Boat.png"},
@@ -53,6 +79,8 @@ PageBase {
     anchors.right: parent.right
     anchors.bottom: bigFooter.top
     model: {
+      return mainModel
+      /*
       switch (optionSelected) {
       case 1:
         return model1
@@ -63,6 +91,7 @@ PageBase {
       case 15:
         return model15
       }
+      */
     }
 
     menuColor: "#695230"
@@ -70,11 +99,11 @@ PageBase {
     function option(pos, locked, title, detail, track, background){
       if (!locked){
         // push component with modelData text, image, sound file and more
-        navigationStack.push(audioPageComponent, {title: title, detail: detail, track: track, background: background, length: optionSelected})
+        navigationStack.push(audioPageComponent, {title: title, detail: detail, track: track, background: background})
       } else {
         // ask whether to switch to the donation menu or not
         donationWindow = true
-        nativeUtils.displayMessageBox(qsTr("Unlock this track by donating to the Tibetan Buddhist Foundation!"), "", 2)
+        nativeUtils.displayMessageBox(qsTr("This track is locked"), qsTr("Unlock this track by donating to the Tibetan Buddhist Foundation!"), 2)
       }
     }
   }

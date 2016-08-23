@@ -48,7 +48,7 @@ ListView {
     if (pos < half){
       // if the option is in the darker upper half
       halfPos = floorHalf - pos
-      var darkness = halfPos / half * 1.5 + 1.0
+      var darkness = halfPos / half * 1.4 + 1.0
       // the shades vary between the actual color (1.0) and the maximum darkness/lightness (3.0 + 1.0)
       color = Qt.darker(menuColor, darkness)
     } else if (pos > half){

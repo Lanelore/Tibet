@@ -25,7 +25,7 @@ PageBase {
       anchors.right: parent.right
 
       Image {
-        source: "../../assets/images/Namgyel.jpg"
+        source: "../../assets/images/Help.png"
         width: parent.width
         fillMode: Image.PreserveAspectFit
       }
